@@ -11,7 +11,7 @@ logulang:
 	int menu;
 	cout << "\n=====================================================\n";
 	cout << "|                                                   |" << endl;
-	cout << "|                   ATMI XXPRESS                    |" << endl;
+	cout << "|                 KOPERASI JAYA JAYA                |" << endl;
 	cout << "|                                                   |" << endl;
 	cout << "=====================================================" << endl;
 	cout << "| 1. Login                                          |\n";
@@ -45,7 +45,7 @@ void Tabungan::login()
 loginulang:
 	system("cls");
 	cout << "----------------------------------------\n";
-	cout << "                ATMI EXPRESS            \n";
+	cout << "            KOPERASI JAYA JAYA          \n";
 	cout << "----------------------------------------\n";
 	cout << "                                        \n";
 	cout << "Username : ";
