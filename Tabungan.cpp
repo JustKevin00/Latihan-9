@@ -117,7 +117,7 @@ void Tabungan::menuadmin(){
 		if (menus == '3') { ubahdata(); goto menu; }
 		if (menus == '4') { inputtabungan(); goto menu; }
 		if (menus == '5') { totaltabungan(); goto menu; }
-		//if (menu == '6') { exportdata(, "Tampilan Data Koperasi.txt"); goto menu; }
+		if (menus == '6') { exportdata("Tampilan Data Koperasi.txt"); goto menu; }
 		if (menus == '7') { hapusdata(); goto menu; }
 		if (menus == '8') { system("cls"); cout << "\nBye Bye\n\n"; }
 		else { cout << "\nEror terjadi permasalahan pada input menu, coba ulang\n\n"; system("pause"); goto menu; }
@@ -265,12 +265,13 @@ system("pause");
 void Tabungan::exportdata(const string& filename) {
 	ofstream tampilkan(filename);
 	system("cls");
-	tampilkan << "-----------------------------------------------------------------------------------------------------------\n";
-	tampilkan << "|             |              |                                   TABUNGAN                                 |\n";
-	tampilkan << "|     NIM     |     NAMA     |----------------------------------------------------------------------------|\n";
-	tampilkan << "|             |              |   JANUARI  |  FEBRUARI  |    MARET   |    APRIL   |     MEI    |   JUNI    |\n";
-	tampilkan << "-----------------------------------------------------------------------------------------------------------\n";
+	tampilkan << "--------------------------------------------------------------------------------------------------------------------------------\n";
+	tampilkan << "|             |              |                                   TABUNGAN                                 |                    |\n";
+	tampilkan << "|     NIM     |     NAMA     |----------------------------------------------------------------------------|         TOTAL      |\n";
+	tampilkan << "|             |              |   JANUARI  |  FEBRUARI  |    MARET   |    APRIL   |     MEI    |   JUNI    |                    |\n";
+	tampilkan << "--------------------------------------------------------------------------------------------------------------------------------\n";
 	for (const auto& p : user) {
+		int ttabungan = p.januari + p.februari + p.maret + p.april + p.mei + p.juni;
 		tampilkan << "| " << setw(12) << left << p.nim
 			<< "| " << setw(13) << left << p.mahasiswa
 			<< "| " << setw(11) << left << p.januari
@@ -279,9 +280,10 @@ void Tabungan::exportdata(const string& filename) {
 			<< "| " << setw(11) << left << p.april
 			<< "| " << setw(11) << left << p.mei
 			<< "| " << setw(10) << left << p.juni
+			<< "| " << setw(19) << left << ttabungan
 			<< "| \n";
 	}
-	tampilkan << "-----------------------------------------------------------------------------------------------------------\n";
+	tampilkan << "--------------------------------------------------------------------------------------------------------------------------------\n";
 	tampilkan.close();
 	cout << "\nData berhasil diekspor ke file.\n";
 	system("pause");
